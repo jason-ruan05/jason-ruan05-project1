@@ -1,8 +1,7 @@
 public class EndStation extends Station {
+    public EndStation(String color, String name){
+        super(color, name);
 
-
-    public EndStation(String name, String color){
-        super(name, color);
     }
 
     public String toString(){

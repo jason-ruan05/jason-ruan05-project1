@@ -55,8 +55,6 @@ public class Project1_Tester {
     assertEquals(true, s1.equals(s6));
   }
 
-
-
   @Test 
   public void test3(){
     System.out.println("test EndStation setup");
@@ -67,7 +65,6 @@ public class Project1_Tester {
 
     assertEquals(true, s1 instanceof Station);
   }
-
 
   @Test 
   public void test4(){
@@ -94,9 +91,6 @@ public class Project1_Tester {
     assertEquals(expected, s1.toString());
   }
 
-
-
-
   @Test 
   public void test5(){
     System.out.println("test TransferStation setup");
@@ -110,34 +104,35 @@ public class Project1_Tester {
       result = true;
     assertEquals(true, result);
   }
+
+  @Test 
+  public void test6(){
+    System.out.println("test add TransferStation");
+
+    TransferStation s1 = new TransferStation("pink", "Museum");
+
+    Station s2 = new Station("blue", "Square");
+    s1.addTransferStationPrev(s2);
+    String expected = "TRANSFERSTATION Museum: pink line, in service: true, previous station: none, next station: none\n\tTransfers: \n" + 
+                          "\tSTATION Square: blue line, in service: true, previous station: none, next station: Museum\n";
+    assertEquals(expected, s1.toString());
+
+    EndStation s3 = new EndStation("green", "Plaza");
+    s1.addTransferStationNext(s3);
+    expected = "TRANSFERSTATION Museum: pink line, in service: true, previous station: none, next station: none\n\tTransfers: \n" + 
+                          "\tSTATION Square: blue line, in service: true, previous station: none, next station: Museum\n" + 
+                          "\tENDSTATION Plaza: green line, in service: true, previous station: Museum, next station: none\n";
+    assertEquals(expected, s1.toString());
+
+    TransferStation s4 = new TransferStation("yellow", "Hill");
+    s1.addTransferStationPrev(s4);
+    expected = "TRANSFERSTATION Museum: pink line, in service: true, previous station: none, next station: none\n\tTransfers: \n" + 
+                          "\tSTATION Square: blue line, in service: true, previous station: none, next station: Museum\n" + 
+                          "\tENDSTATION Plaza: green line, in service: true, previous station: Museum, next station: none\n" + 
+                          "\tTRANSFERSTATION Hill: yellow line, in service: true, previous station: none, next station: Museum\n\tTransfers: \n\n";
+    assertEquals(expected, s1.toString());
+  }
 }
-//   @Test 
-//   public void test6(){
-//     System.out.println("test add TransferStation");
-
-//     TransferStation s1 = new TransferStation("pink", "Museum");
-
-//     Station s2 = new Station("blue", "Square");
-//     s1.addTransferStationPrev(s2);
-//     String expected = "TRANSFERSTATION Museum: pink line, in service: true, previous station: none, next station: none\n\tTransfers: \n" + 
-//                           "\tSTATION Square: blue line, in service: true, previous station: none, next station: Museum\n";
-//     assertEquals(expected, s1.toString());
-
-//     EndStation s3 = new EndStation("green", "Plaza");
-//     s1.addTransferStationNext(s3);
-//     expected = "TRANSFERSTATION Museum: pink line, in service: true, previous station: none, next station: none\n\tTransfers: \n" + 
-//                           "\tSTATION Square: blue line, in service: true, previous station: none, next station: Museum\n" + 
-//                           "\tENDSTATION Plaza: green line, in service: true, previous station: Museum, next station: none\n";
-//     assertEquals(expected, s1.toString());
-
-//     TransferStation s4 = new TransferStation("yellow", "Hill");
-//     s1.addTransferStationPrev(s4);
-//     expected = "TRANSFERSTATION Museum: pink line, in service: true, previous station: none, next station: none\n\tTransfers: \n" + 
-//                           "\tSTATION Square: blue line, in service: true, previous station: none, next station: Museum\n" + 
-//                           "\tENDSTATION Plaza: green line, in service: true, previous station: Museum, next station: none\n" + 
-//                           "\tTRANSFERSTATION Hill: yellow line, in service: true, previous station: none, next station: Museum\n\tTransfers: \n\n";
-//     assertEquals(expected, s1.toString());
-//   }
 
 //   @Test 
 //   public void test7(){
