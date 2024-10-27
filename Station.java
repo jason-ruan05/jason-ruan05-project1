@@ -60,7 +60,12 @@ public class Station {
     }
 
     public void connect(Station s){
-
+        // if(this.prev == null && this.next == null){
+        //     this.prev = s;
+        //     this.next = s;
+        // }
+        this.next = s;
+        s.prev = this;
     }
 
     public int tripLength(Station dest){

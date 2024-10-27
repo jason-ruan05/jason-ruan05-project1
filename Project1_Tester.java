@@ -132,69 +132,71 @@ public class Project1_Tester {
                           "\tTRANSFERSTATION Hill: yellow line, in service: true, previous station: none, next station: Museum\n\tTransfers: \n\n";
     assertEquals(expected, s1.toString());
   }
+
+
+  @Test 
+  public void test7(){
+    System.out.println("test Station connect");
+
+    Station s1 = new Station("pink", "Museum");
+    String expected = "STATION Museum: pink line, in service: true, previous station: none, next station: none";
+    assertEquals(expected, s1.toString());
+
+    Station s2 = new Station("green", "Square");
+    s1.connect(s2);
+    expected = "STATION Museum: pink line, in service: true, previous station: none, next station: Square";
+    assertEquals(expected, s1.toString());
+    expected = "STATION Square: green line, in service: true, previous station: Museum, next station: none";
+    assertEquals(expected, s2.toString());
+
+    Station s3 = new Station("blue", "Plaza");
+    s3.connect(s1);
+    expected = "STATION Museum: pink line, in service: true, previous station: Plaza, next station: Square";
+    assertEquals(expected, s1.toString());
+    expected = "STATION Plaza: blue line, in service: true, previous station: none, next station: Museum";
+    assertEquals(expected, s3.toString());
+  }
+
+
+  @Test 
+  public void test8(){
+    System.out.println("test orange line");
+
+    MetroSimulator.initialize();
+    EndStation orange = MetroSimulator.makeOrangeLine();
+    String expected = "ENDSTATION Virginia Square: orange line, in service: true, previous station: Clarendon, next station: Clarendon";
+    assertEquals(expected, orange.toString());
+
+    Station next = orange.next;
+    expected = "STATION Clarendon: orange line, in service: true, previous station: Virginia Square, next station: Court House";
+    assertEquals(expected, next.toString());
+    next = next.next;
+    expected = "STATION Court House: orange line, in service: true, previous station: Clarendon, next station: Rosslyn";
+    assertEquals(expected, next.toString());
+    next = next.next;
+    expected = "STATION Rosslyn: orange line, in service: true, previous station: Court House, next station: Foggy Bottom";
+    assertEquals(expected, next.toString());
+    next = next.next;
+    expected = "STATION Foggy Bottom: orange line, in service: true, previous station: Rosslyn, next station: Farragut West";
+    assertEquals(expected, next.toString());
+    next = next.next;
+    expected = "STATION Farragut West: orange line, in service: true, previous station: Foggy Bottom, next station: McPherson Square";
+    assertEquals(expected, next.toString());
+    next = next.next;
+    expected = "STATION McPherson Square: orange line, in service: true, previous station: Farragut West, next station: Metro Center";
+    assertEquals(expected, next.toString());
+    next = next.next;
+    expected = "TRANSFERSTATION Metro Center: orange/red/purple line, in service: true, previous station: McPherson Square, next station: Federal Triangle\n" +
+                    "\tTransfers: \n";
+    assertEquals(expected, next.toString());
+    next = next.next;
+    expected = "STATION Federal Triangle: orange line, in service: true, previous station: Metro Center, next station: Smithsonian";
+    assertEquals(expected, next.toString());
+    next = next.next;
+    expected = "ENDSTATION Smithsonian: orange line, in service: true, previous station: Federal Triangle, next station: Federal Triangle";
+    assertEquals(expected, next.toString());
+  }
 }
-
-//   @Test 
-//   public void test7(){
-//     System.out.println("test Station connect");
-
-//     Station s1 = new Station("pink", "Museum");
-//     String expected = "STATION Museum: pink line, in service: true, previous station: none, next station: none";
-//     assertEquals(expected, s1.toString());
-
-//     Station s2 = new Station("green", "Square");
-//     s1.connect(s2);
-//     expected = "STATION Museum: pink line, in service: true, previous station: none, next station: Square";
-//     assertEquals(expected, s1.toString());
-//     expected = "STATION Square: green line, in service: true, previous station: Museum, next station: none";
-//     assertEquals(expected, s2.toString());
-
-//     Station s3 = new Station("blue", "Plaza");
-//     s3.connect(s1);
-//     expected = "STATION Museum: pink line, in service: true, previous station: Plaza, next station: Square";
-//     assertEquals(expected, s1.toString());
-//     expected = "STATION Plaza: blue line, in service: true, previous station: none, next station: Museum";
-//     assertEquals(expected, s3.toString());
-//   }
-
-//   @Test 
-//   public void test8(){
-//     System.out.println("test orange line");
-
-//     MetroSimulator.initialize();
-//     EndStation orange = MetroSimulator.makeOrangeLine();
-//     String expected = "ENDSTATION Virginia Square: orange line, in service: true, previous station: Clarendon, next station: Clarendon";
-//     assertEquals(expected, orange.toString());
-
-//     Station next = orange.next;
-//     expected = "STATION Clarendon: orange line, in service: true, previous station: Virginia Square, next station: Court House";
-//     assertEquals(expected, next.toString());
-//     next = next.next;
-//     expected = "STATION Court House: orange line, in service: true, previous station: Clarendon, next station: Rosslyn";
-//     assertEquals(expected, next.toString());
-//     next = next.next;
-//     expected = "STATION Rosslyn: orange line, in service: true, previous station: Court House, next station: Foggy Bottom";
-//     assertEquals(expected, next.toString());
-//     next = next.next;
-//     expected = "STATION Foggy Bottom: orange line, in service: true, previous station: Rosslyn, next station: Farragut West";
-//     assertEquals(expected, next.toString());
-//     next = next.next;
-//     expected = "STATION Farragut West: orange line, in service: true, previous station: Foggy Bottom, next station: McPherson Square";
-//     assertEquals(expected, next.toString());
-//     next = next.next;
-//     expected = "STATION McPherson Square: orange line, in service: true, previous station: Farragut West, next station: Metro Center";
-//     assertEquals(expected, next.toString());
-//     next = next.next;
-//     expected = "TRANSFERSTATION Metro Center: orange/red/purple line, in service: true, previous station: McPherson Square, next station: Federal Triangle\n" +
-//                     "\tTransfers: \n";
-//     assertEquals(expected, next.toString());
-//     next = next.next;
-//     expected = "STATION Federal Triangle: orange line, in service: true, previous station: Metro Center, next station: Smithsonian";
-//     assertEquals(expected, next.toString());
-//     next = next.next;
-//     expected = "ENDSTATION Smithsonian: orange line, in service: true, previous station: Federal Triangle, next station: Federal Triangle";
-//     assertEquals(expected, next.toString());
-//   }
 
 //   @Test 
 //   public void test9(){
