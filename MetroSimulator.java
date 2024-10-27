@@ -82,16 +82,24 @@ public static EndStation makeOrangeLine(){
 
 public static EndStation makeRedLine(){
     woodley_park.connect(dupont_circle);
-    
-    //connect the other stations here
+    woodley_park.makeEnd();
+    dupont_circle.connect(farragut_north);
+    metro_center.addTransferStationPrev(farragut_north);
+    metro_center.addTransferStationNext(gallery_place);
+    gallery_place.connect(judiciary_square);
+    judiciary_square.makeEnd();
 
     return woodley_park;
 }
 
 public static EndStation makePurpleLine(){
     s1.connect(s2);
-    
-    //connect the other stations here
+    s1.makeEnd();
+    s2.connect(s3);
+    metro_center.addTransferStationPrev(s3);
+    metro_center.addTransferStationNext(s4);
+    s4.connect(s5);
+    s5.makeEnd();
 
     return s1;
 }

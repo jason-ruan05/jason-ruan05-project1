@@ -1,19 +1,19 @@
 import java.util.ArrayList;
 public class TransferStation extends Station {
-    public ArrayList<Station> transfers;
+    public ArrayList<Station> otherStations;
 
     public TransferStation(String color, String name){
         super(color, name);
-        this.transfers = new ArrayList<>();
+        this.otherStations = new ArrayList<>();
     }
     public void addTransferStationNext(Station s){
         s.prev = this;
-        this.transfers.add(s);
+        this.otherStations.add(s);
     }
 
     public void addTransferStationPrev(Station s){
         s.next = this;
-        this.transfers.add(s);
+        this.otherStations.add(s);
     }
 
     public String nameTransfer(ArrayList<Station> transfers){
@@ -31,6 +31,6 @@ public class TransferStation extends Station {
 
 
     public String toString(){
-        return "TRANSFERSTATION " + name + ": " + color + " line, in service: " + isAvailable + ", previous station: " + noneName(prev) + ", next station: " + noneName(next) + "\n\tTransfers: \n" + nameTransfer(transfers);
+        return "TRANSFERSTATION " + name + ": " + color + " line, in service: " + isAvailable + ", previous station: " + noneName(prev) + ", next station: " + noneName(next) + "\n\tTransfers: \n" + nameTransfer(otherStations);
     }
 }
