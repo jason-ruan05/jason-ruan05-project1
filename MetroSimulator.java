@@ -62,7 +62,7 @@ public static void initialize(){
     s4 = new Station("purple", "S4");
     s5 = new EndStation("purple", "S5");
 }
-
+//The connection for a orangeLine
 public static EndStation makeOrangeLine(){
     va_square.connect(clarendon);
     va_square.makeEnd();
@@ -79,8 +79,9 @@ public static EndStation makeOrangeLine(){
     return va_square;
 
 }
-
+//The connection for a redLine
 public static EndStation makeRedLine(){
+    //
     woodley_park.connect(dupont_circle);
     woodley_park.makeEnd();
     dupont_circle.connect(farragut_north);
@@ -91,7 +92,7 @@ public static EndStation makeRedLine(){
 
     return woodley_park;
 }
-
+//The connection for a purple line
 public static EndStation makePurpleLine(){
     s1.connect(s2);
     s1.makeEnd();
